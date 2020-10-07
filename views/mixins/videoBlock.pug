@@ -1,0 +1,12 @@
+//- argument의 이름을 video라고 한다. 기본값은 {}
+mixin videoBlock(video={})
+    div.videoBlock
+        a(href=routes.videoDetail(video.id))
+            video.videoBlock_thumbnail(src=video.videoFile, controls=true)
+            h4.videoBlock_title=video.title
+            if video.views ===0
+                h6.videoBlock_views 0 view
+            if video.views ===1
+                h6.videoBlock_views 1 view
+            else
+                h6.videoBlock_views #{video.views} views
