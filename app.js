@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "pug");
+app.use(routes.upload, express.static("upload"));
 
 app.use(localsMiddleware);
 
