@@ -1,0 +1,81 @@
+.videoPlayer {
+  position: relative;
+  &:hover {
+    .videoPlayer__controls {
+      opacity: 1;
+    }
+  }
+  video {
+    background-color: black;
+    max-height: 1000px;
+    max-width: auto;
+    width: 100%;
+  }
+  .videoPlayer__controls {
+    opacity: 0;
+    transition: opacity 0.4s linear;
+    color: white;
+    position: absolute;
+    z-index: 9;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 16px;
+    .videoPlayer__column:first-child {
+      display: flex;
+      align-items: center;
+      #jsVolumeButton {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .videoPlayer__column__subclass {
+    &:hover {
+      .videoPlayer__volume {
+        opacity: 1;
+      }
+    }
+  }
+  // 직접 만들었다.
+
+  .videoPlayer__volume {
+    position: absolute;
+    padding: 0;
+    opacity: 0;
+    top: -60px;
+    left: -25px;
+    transform: rotate(-90deg);
+    z-index: 10;
+    width: 80px;
+  }
+
+  .videoPlayer__column:last-child {
+    justify-self: end;
+  }
+  .videoPlayer__column:nth-child(2) {
+    display: inline-flex;
+    span {
+      justify-self: start;
+      margin-right: 10px;
+    }
+    .jsPlayerBoxOutside {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 300px;
+      height: 24.8px;
+      .jsPlayerBoxInside {
+        background-color: white;
+        width: 0px;
+        height: 24.8px;
+      }
+    }
+  }
+  //직접 만들었다.
+  i {
+    font-size: 25px;
+    cursor: pointer;
+  }
+}

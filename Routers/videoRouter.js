@@ -7,14 +7,15 @@ import {
   editVideo,
   deleteVideo,
 } from "../Controllers/videoController";
-import { multerSingleVideo } from "../middleware";
+import { multerSingleVideo, onlyPrivate } from "../middleware";
 
 const videoRouter = express.Router();
 
-videoRouter.get(routes.upload, getUpload);
-videoRouter.post(routes.upload, multerSingleVideo, postUpload);
+videoRouter.get(routes.upload, onlyPrivate, getUpload);
+videoRouter.post(routes.upload, onlyPrivate, multerSingleVideo, postUpload);
+// video 상세보기는 누구나 할 수 있다.
 videoRouter.get(routes.videoDetail(), videoDetail);
-videoRouter.get(routes.editVideo(), editVideo);
-videoRouter.get(routes.deleteVideo(), deleteVideo);
+videoRouter.get(routes.editVideo(), onlyPrivate, editVideo);
+videoRouter.get(routes.deleteVideo(), onlyPrivate, deleteVideo);
 
 export default videoRouter;
